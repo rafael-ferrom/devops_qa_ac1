@@ -1,15 +1,18 @@
 package com.example.DQAP.ValueObjects;
 
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
+
 import java.util.Objects;
 
 @Embeddable
+@Getter
 public class IdentificacaoCurso {
 
     private String codigo;
 
     protected IdentificacaoCurso() {
-        // Construtor protegido para uso do JPA
+        // Construtor protegido exigido pelo JPA
     }
 
     public IdentificacaoCurso(String codigo) {
@@ -17,10 +20,6 @@ public class IdentificacaoCurso {
             throw new IllegalArgumentException("O código do curso não pode ser nulo ou vazio.");
         }
         this.codigo = codigo.toUpperCase().trim();
-    }
-
-    public String getCodigo() {
-        return codigo;
     }
 
     @Override

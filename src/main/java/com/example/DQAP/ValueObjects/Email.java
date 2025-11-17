@@ -1,23 +1,22 @@
 package com.example.DQAP.ValueObjects;
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
+
 import java.util.Objects;
 
 @Embeddable
+@Getter
 public class Email {
 
     private String endereco;
 
-    protected Email() {} // Construtor padrão exigido pelo JPA
+    protected Email() {}
 
     public Email(String endereco) {
         if (endereco == null || !endereco.matches("^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$")) {
             throw new IllegalArgumentException("Email inválido: " + endereco);
         }
         this.endereco = endereco;
-    }
-
-    public String getEndereco() {
-        return endereco;
     }
 
     @Override
@@ -38,4 +37,3 @@ public class Email {
         return endereco;
     }
 }
-

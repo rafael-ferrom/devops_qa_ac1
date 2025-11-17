@@ -1,8 +1,11 @@
 package com.example.DQAP.ValueObjects;
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
+
 import java.util.Objects;
 
 @Embeddable
+@Getter
 public class Senha {
 
     private String hash;
@@ -17,16 +20,11 @@ public class Senha {
     }
 
     private String gerarHash(String senhaPura) {
-        // Apenas para exemplo — use BCrypt ou Argon2 na prática
         return Integer.toHexString(senhaPura.hashCode());
     }
 
     public boolean verificar(String senhaPura) {
         return this.hash.equals(gerarHash(senhaPura));
-    }
-
-    public String getHash() {
-        return hash;
     }
 
     @Override

@@ -27,7 +27,6 @@ public class ProgressController {
         return progressoService.calcularProgresso(idAluno);
     }
 
-    // ✅ NOVO POST
     @PostMapping("/{idAluno}/{idCurso}")
     public ResponseEntity<Conclusao> registrarConclusao(
             @PathVariable Long idAluno,
